@@ -1,0 +1,37 @@
+.congrats {
+    margin-top: 50px;
+    position: relative;
+    z-index: -1;
+
+    .ferry {
+
+        animation: movein 10s forwards;
+        -moz-animation: movein 10s forwards; /* Firefox */
+        -webkit-animation: movein 10s forwards; /* Safari and Chrome */
+    
+        @keyframes movein {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+        @-moz-keyframes movein { /* Firefox */
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+        @-webkit-keyframes movein { /* Safari and Chrome */
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+    }
+}
