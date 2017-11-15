@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {} from './style.scss';
 
-class Secret extends Component {
+class CongratsContainer extends Component {
     render() {
         return (
             <article className="congrats">                
@@ -14,4 +14,4 @@ class Secret extends Component {
     }
 }
 
-export default Secret;
+export default CongratsContainer;
