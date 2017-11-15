@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Snowflakes from '../../components/snowflakes';
 import SecretsContainer from '../secrets';
-import Congrats from '../../components/congrats';
+import CongratsContainer from '../congrats';
+import Slides from '../../decorators/slides';
 import {} from './reset.scss';
 import {} from './style.scss';
 
+@Slides
 class AppContainer extends Component {
     constructor() {
         super();
@@ -15,10 +17,7 @@ class AppContainer extends Component {
     }
 
     handleAllCorrect = () => {
-        console.log('i should be called?');
-        setTimeout(() => {
-            this.setState({showCongrats: true});
-        }, 2000);
+        this.setState({showCongrats: true});
     }
 
     render() {
@@ -26,7 +25,7 @@ class AppContainer extends Component {
             <article className="app-container">
                 <Snowflakes limit={150}/>
                 <SecretsContainer allCorrect={this.handleAllCorrect}/>
-                {this.state.showCongrats ? <Congrats /> : ''}
+                {this.state.showCongrats ? <CongratsContainer /> : ''}
             </article>
         )
     }
