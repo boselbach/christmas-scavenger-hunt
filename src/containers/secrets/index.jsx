@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import update from 'immutability-helper';
 import PropTypes from 'prop-types';
 import Secret from '../../components/secret';
+import Timer from '../../components/timer';
 import {} from './style.scss';
 
 class SecretsContainer extends Component {
@@ -18,17 +19,20 @@ class SecretsContainer extends Component {
                     id: 1,
                     code: '1',
                     correct: false,
-                    focus: true
+                    focus: true,
+                    label: 'Milla'
                 },
                 {
                     id: 2,
                     code: '2',
-                    correct: false
+                    correct: false,
+                    label: 'Mikkel'
                 },
                 {
                     id: 3,
                     code: '3',
-                    correct: false
+                    correct: false,
+                    label: 'Stephanie'
                 }
             ],
             allCorrect: false
@@ -46,7 +50,6 @@ class SecretsContainer extends Component {
         });
 
         if (allCorrect) {
-            console.log('allcorrent', allCorrect);
             this.props.allCorrect();
         }
     }
@@ -57,8 +60,10 @@ class SecretsContainer extends Component {
         if (this.state.allCorrect) {
             secretsClass.push('hide');
         }
+
         return (
             <article className={secretsClass.join(' ')}>
+                <Timer time={300}/>
                 <div className="container">
                     {this.state.secrets.map((item, index) => {
                         return <Secret item={item} key={index} correct={this.handleCorrect}/>

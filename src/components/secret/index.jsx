@@ -7,9 +7,11 @@ class Secret extends Component {
         item: PropTypes.object.isRequired
     }
 
-    componentDidMount = () => {
-        if (this.props.item.focus) {
-            this.input.focus();
+    constructor() {
+        super();
+
+        this.state = {
+            active: false
         }
     }
 
@@ -19,16 +21,41 @@ class Secret extends Component {
         this.props.correct(secret);
     }
 
+    handleFocus = (e) => {
+        this.setState({active: true});
+    }
+
+    handleBlur = (e) => {
+        this.setState({active: false});
+    }
+
     render() {
         let secretClass = ['secret'];
+        let labelClass = [];
 
         if (this.props.item.correct) {
             secretClass.push('correct');
         }
 
+        if (this.state.active) {
+            labelClass.push('active');
+        }
+
         return (
+
             <article className={secretClass.join(' ')}>
-                <input ref={input => this.input = input} type="password" onChange={this.handleChange} placeholder="Indtast kode"/>
+                <img className="nissehue" src="../../../assets/images/nissehue.png" alt=""/>
+                <input 
+                    ref={input => this.input = input} 
+                    onChange={this.handleChange} 
+                    onFocus={this.handleFocus} 
+                    onBlur={this.handleBlur}
+                    type="password" 
+                    placeholder="Indtast kode" 
+                />
+                <label className={labelClass.join(' ')}>
+                    {this.props.item.label}
+                </label>
             </article>
         )
     }
